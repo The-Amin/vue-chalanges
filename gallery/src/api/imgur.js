@@ -1,15 +1,14 @@
-import qs from "qs";
-import axios from "axios";
-import { router } from "../main";
+import qs from 'qs';
+import axios from 'axios';
 
-const CLIENT_ID = "f7b41ddb800fbbb";
-const ROOT_URL = "https://api.imgur.com";
+const CLIENT_ID = 'f7b41ddb800fbbb';
+const ROOT_URL = 'https://api.imgur.com';
 
 export default {
   login() {
     const queryString = {
       client_id: CLIENT_ID,
-      response_type: "token",
+      response_type: 'token',
     };
     window.location = `${ROOT_URL}/oauth2/authorize?${qs.stringify(
       queryString
@@ -25,7 +24,7 @@ export default {
   uploadImage: (images, token) => {
     var promises = Array.from(images).map((image) => {
       var formData = new FormData();
-      formData.append("image", image);
+      formData.append('image', image);
 
       return axios.post(`${ROOT_URL}/3/image`, formData, {
         headers: {
